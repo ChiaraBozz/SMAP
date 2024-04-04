@@ -18,7 +18,7 @@ from lib.utils.dataloader import get_test_loader
 from lib.utils.comm import is_main_process
 from exps.stage3_root2.test_util import *
 from dataset.custom_dataset import CustomDataset
-from config import cfg
+from exps.stage3_root2.config import cfg
 import dapalib
 
 

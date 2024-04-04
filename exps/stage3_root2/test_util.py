@@ -6,7 +6,7 @@ import numpy as np
 import copy
 import torch
 
-from config import cfg
+from exps.stage3_root2.config import cfg
 from lib.utils.post_3d import get_3d_points
 
 
@@ -33,7 +33,7 @@ def register_pred(pred_bodys, gt_bodys, root_n=2):
                 else:
                     corres[min_idx[0][i]] = min_idx[1][i]
                     occupied[min_idx[1][i]] = 1
-        new_pred_bodys = np.zeros((len(gt_bodys), len(gt_bodys[0]), 4), np.float)
+        new_pred_bodys = np.zeros((len(gt_bodys), len(gt_bodys[0]), 4), float)
         for i in range(len(gt_bodys)):
             if corres[i] >= 0:
                 new_pred_bodys[i] = pred_bodys[corres[i]]
@@ -102,8 +102,8 @@ def gen_3d_pose(pred_bodys, depth_necks, scale):
 def lift_and_refine_3d_pose(pred_bodys_2d, pred_bodys_3d, refine_model, device, root_n=2):
     root_3d_bodys = copy.deepcopy(pred_bodys_3d)
     root_2d_bodys = copy.deepcopy(pred_bodys_2d)
-    score_after_refine = np.ones([pred_bodys_3d.shape[0], pred_bodys_3d.shape[1], 1], dtype=np.float)
-    input_point = np.zeros((pred_bodys_3d.shape[0], 15, 5), dtype=np.float)
+    score_after_refine = np.ones([pred_bodys_3d.shape[0], pred_bodys_3d.shape[1], 1], dtype=float)
+    input_point = np.zeros((pred_bodys_3d.shape[0], 15, 5), dtype=float)
     input_point[:, root_n, :2] = root_2d_bodys[:, root_n, :2]
     input_point[:, root_n, 2:] = root_3d_bodys[:, root_n, :3]
     for i in range(len(root_3d_bodys)):
