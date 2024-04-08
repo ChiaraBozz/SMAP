@@ -54,7 +54,8 @@ done
 #####################
 mkdir -p hdVideos
 panel=0
-nodes=(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30)
+#nodes=(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30)
+nodes=(3 6 12 13 23)
 for (( c=0; c<$numHDViews; c++))
 do
   fileName=$(printf "hdVideos/hd_%02d_%02d.mp4" ${panel} ${nodes[c]})
