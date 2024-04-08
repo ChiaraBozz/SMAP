@@ -50,7 +50,7 @@ class CustomDataset(Dataset):
         scale['net_width'] = self.net_input_shape[0]
         scale['net_height'] = self.net_input_shape[1]
 
-        center = np.array([img.shape[1]//2, img.shape[0]//2], dtype=np.int)
+        center = np.array([img.shape[1]//2, img.shape[0]//2], dtype=int)
         
         if img.shape[1] < crop_x:    # pad left and right
             margin_l = (crop_x - img.shape[1]) // 2
