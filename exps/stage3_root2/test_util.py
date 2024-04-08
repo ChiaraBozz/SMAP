@@ -59,8 +59,8 @@ def chain_bones(pred_bodys, depth_v, i, depth_0=0, root_n=2):
 
 def generate_relZ(pred_bodys, paf_3d_upsamp, root_d_upsamp, scale, num_intermed_pts=10, root_n=2):
     limb_intermed_coords = np.empty((2, num_intermed_pts), dtype=np.intp)
-    depth_v = np.zeros((len(pred_bodys), NUM_LIMBS), dtype=np.float)
-    depth_roots_pred = np.zeros(len(pred_bodys), dtype=np.float)
+    depth_v = np.zeros((len(pred_bodys), NUM_LIMBS), dtype=float)
+    depth_roots_pred = np.zeros(len(pred_bodys), dtype=float)
     for i, pred_body in enumerate(pred_bodys):
         if pred_body[root_n][3] > 0:
             depth_roots_pred[i] = root_d_upsamp[int(pred_body[root_n][1]), int(pred_body[root_n][0])] * scale['scale'] * scale['f_x']
